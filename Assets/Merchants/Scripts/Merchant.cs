@@ -7,8 +7,10 @@ public class Merchant : MonoBehaviour
 {
     public string merchantName = "DefaultName";
     // Which prompt to spawn when the player is near this merchant
-    public GameObject interactionPrompt;
-    public GameObject interactionOptions;
+    public GameObject interactionPromptPrefab;
+    public GameObject interactionOptionsPrefab;
+    // List of items this merchant has
+    public List<ItemDataSO> items;
     // Insert custom options logic here. For example, merchants
     // can show different dialogue optioons depending on if the player has completed
     // scertain goals.
@@ -17,15 +19,13 @@ public class Merchant : MonoBehaviour
         
     }
 
-    // List of items this merchant has
-    protected List<Item> items;
     private Button[] interactionOptionsButtons;
     private int selectedInteractionOptionIndex;
 
     public virtual void Start()
     {
         selectedInteractionOptionIndex = 0;
-        interactionOptionsButtons = interactionOptions.GetComponentsInChildren<Button>();
+        interactionOptionsButtons = interactionOptionsPrefab.GetComponentsInChildren<Button>();
         interactionOptionsButtons[0].Select();
     }
 
@@ -34,14 +34,14 @@ public class Merchant : MonoBehaviour
     public virtual void Update()
     {
         // Check if the player can interact with this merchant
-        if (interactionPrompt.activeSelf)
+        if (interactionPromptPrefab.activeSelf)
         {
             if (Input.GetButtonDown("Interact"))
             {
-                interactionPrompt.SetActive(false);
+                interactionPromptPrefab.SetActive(false);
                 StartInteraction();
                 selectedInteractionOptionIndex = 0;
-                interactionOptions.SetActive(true);
+                interactionOptionsPrefab.SetActive(true);
                 // Freeze the player
                 GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().enabled = false;
 
@@ -50,7 +50,7 @@ public class Merchant : MonoBehaviour
 
         // Navigate the interaction options
         // but only if the player has interacted with the merchant
-        if (interactionOptions.activeSelf)
+        if (interactionOptionsPrefab.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -84,7 +84,7 @@ public class Merchant : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            interactionPrompt.gameObject.SetActive(true);
+            interactionPromptPrefab.gameObject.SetActive(true);
         }
     }
 
@@ -92,7 +92,7 @@ public class Merchant : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            interactionPrompt.gameObject.SetActive(false);
+            interactionPromptPrefab.gameObject.SetActive(false);
         }
     }
 
@@ -100,6 +100,6 @@ public class Merchant : MonoBehaviour
     {
         // Unfreeze the player
         GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().enabled = true;
-        interactionOptions.SetActive(false);
+        interactionOptionsPrefab.SetActive(false);
     }
 }
