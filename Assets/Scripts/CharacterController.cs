@@ -30,8 +30,6 @@ public class CharacterController : MonoBehaviour
                 newLocalScale.x *= -1.0f;
                 this.gameObject.transform.localScale = newLocalScale;
             }
-            
-            //animator.SetInteger("Direction", 3);
         }
         else if (Input.GetKey(KeyCode.D))
         {
@@ -43,19 +41,15 @@ public class CharacterController : MonoBehaviour
                 newLocalScale.x *= -1.0f;
                 this.gameObject.transform.localScale = newLocalScale;
             }
-
-            //animator.SetInteger("Direction", 2);
         }
 
         if (Input.GetKey(KeyCode.W))
         {
             dir.y = 1;
-            //animator.SetInteger("Direction", 1);
         }
         else if (Input.GetKey(KeyCode.S))
         {
             dir.y = -1;
-            //animator.SetInteger("Direction", 0);
         }
 
         dir.Normalize();
