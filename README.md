@@ -9,7 +9,7 @@ Controls:<br />
 
 # Overview:
 ![BlueGravityProject](https://github.com/StRaToX123/BlueGravityProject/assets/26925590/bf347cce-72b8-4fa2-b5cb-2ba1c42a8e22)
-
+<br />
 The project contains the following features, all the scripting logic mentioned here was writen during the making of this project: <br />
     - A pixalated map, reminiscent of “Stardew Valley” <br />
     - A character controller, the player can walk around the world and interact <br />
