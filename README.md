@@ -6,7 +6,8 @@ Controls:<br />
     - Move : WASD<br />
     - Interact : e<br />
     - Back : escape<br />
-
+    <br />
+The project features one scene (Scenes->BlueGravityProjectScene)<br />
 # Overview:
 ![BlueGravityProject](https://github.com/StRaToX123/BlueGravityProject/assets/26925590/bf347cce-72b8-4fa2-b5cb-2ba1c42a8e22)
 <br />
