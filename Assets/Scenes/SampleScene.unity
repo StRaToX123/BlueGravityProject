@@ -21870,6 +21870,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1130032215}
   - component: {fileID: 1130032214}
+  - component: {fileID: 1130032216}
   - component: {fileID: 1130032213}
   - component: {fileID: 1130032212}
   - component: {fileID: 1130032211}
@@ -22021,9 +22022,7 @@ MonoBehaviour:
   merchantName: Merchant Cat
   interactionPromptPrefab: {fileID: 577824357}
   interactionOptionsPrefab: {fileID: 1719424080}
-  items:
-  - {fileID: 11400000, guid: 74ca933c438dd4a4f9f8fbb986488498, type: 2}
-  - {fileID: 11400000, guid: 55f0924a8c02870448fb823236d79a88, type: 2}
+  itemInventory: {fileID: 1130032216}
   transactionMenuPrefab: {fileID: 4248304697541508130, guid: c7bea7a4c1f3e1b4d96790b351d5b6b3,
     type: 3}
 --- !u!4 &1130032215
@@ -22045,6 +22044,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1130032216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130032209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bec64a1be86c64f8fc800f2653bdbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfCoins: 0
+  hasInfiniteCoins: 1
+  items:
+  - {fileID: 11400000, guid: 74ca933c438dd4a4f9f8fbb986488498, type: 2}
+  - {fileID: 11400000, guid: 55f0924a8c02870448fb823236d79a88, type: 2}
+  - {fileID: 11400000, guid: fa919a262ce2fae47826ec31cdf0a997, type: 2}
+  - {fileID: 11400000, guid: 55f0924a8c02870448fb823236d79a88, type: 2}
 --- !u!1001 &1131802035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38582,10 +38600,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010379845182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26e11009ca995c74f89ad203cd54ddf1, type: 3}
+  m_Script: {fileID: 11500000, guid: c8bec64a1be86c64f8fc800f2653bdbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfCoins: 11
+  hasInfiniteCoins: 0
   items: []
 --- !u!212 &212000008813549936
 SpriteRenderer:
@@ -39735,4 +39754,4 @@ MonoBehaviour:
   merchantName: DefaultName
   interactionPromptPrefab: {fileID: 0}
   interactionOptionsPrefab: {fileID: 0}
-  items: []
+  itemInventory: {fileID: 0}

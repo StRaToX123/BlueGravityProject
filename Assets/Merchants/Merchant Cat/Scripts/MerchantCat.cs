@@ -13,8 +13,6 @@ public class MerchantCat : Merchant
     {
         base.Start();
         isTransactionMenuActive = false;
-
-
     }
 
     // Update is called once per frame
@@ -39,11 +37,12 @@ public class MerchantCat : Merchant
     public void InteractionOptionBuyCallback()
     {
         TransactionMenu transactionMenu = GameObject.Instantiate(transactionMenuPrefab).GetComponent<TransactionMenu>();
+        transactionMenu.OnClose += OnTransactionMenuCloseCallback;
         transactionMenu.ShowTransactionMenu("BUY MENU", 
             merchantName, 
-            "E: Purchase", 
-            items, 
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>().items);
+            "E: Purchase",
+            itemInventory, 
+            GameObject.FindGameObjectWithTag("Player").GetComponent<ItemInventory>());
         isTransactionMenuActive = true;
     }
 
@@ -51,11 +50,17 @@ public class MerchantCat : Merchant
     public void InteractionOptionSellCallback()
     {
         TransactionMenu transactionMenu = GameObject.Instantiate(transactionMenuPrefab).GetComponent<TransactionMenu>();
+        transactionMenu.OnClose += OnTransactionMenuCloseCallback;
         transactionMenu.ShowTransactionMenu("SELL ITEMS",
             merchantName,
             "E: Sell Item",
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>().items,
-            items);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<ItemInventory>(),
+            itemInventory);
+        isTransactionMenuActive = true;
+    }
+
+    void OnTransactionMenuCloseCallback()
+    {
         isTransactionMenuActive = false;
     }
 }

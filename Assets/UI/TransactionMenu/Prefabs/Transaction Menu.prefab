@@ -344,9 +344,9 @@ MonoBehaviour:
   tmpSellerName: {fileID: 4248304698876751658}
   tmpControl01: {fileID: 4248304698899840185}
   tmpControl02: {fileID: 4248304697974414539}
-  tmpAvailableCoins: {fileID: 4248304698535996263}
-  upArrow: {fileID: 4248304698707726192}
-  downArrow: {fileID: 4248304697245205793}
+  tmpPlayerAvailableCoins: {fileID: 4248304698535996263}
+  upScrollArrow: {fileID: 4248304698707726192}
+  downScrollArrow: {fileID: 4248304697245205793}
   transactionMenuItems:
   - {fileID: 3238894423495481272}
   - {fileID: 7160782934198627458}

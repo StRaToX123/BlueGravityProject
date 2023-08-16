@@ -9,8 +9,7 @@ public class Merchant : MonoBehaviour
     // Which prompt to spawn when the player is near this merchant
     public GameObject interactionPromptPrefab;
     public GameObject interactionOptionsPrefab;
-    // List of items this merchant has
-    public List<ItemDataSO> items;
+    public ItemInventory itemInventory;
     // Insert custom options logic here. For example, merchants
     // can show different dialogue optioons depending on if the player has completed
     // scertain goals.
@@ -24,6 +23,7 @@ public class Merchant : MonoBehaviour
 
     public virtual void Start()
     {
+        itemInventory.hasInfiniteCoins = true;
         selectedInteractionOptionIndex = 0;
         interactionOptionsButtons = interactionOptionsPrefab.GetComponentsInChildren<Button>();
         interactionOptionsButtons[0].Select();
@@ -33,6 +33,7 @@ public class Merchant : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
+        itemInventory.numberOfCoins = 999;
         // Navigate the interaction options
         // but only if the player has interacted with the merchant
         if (interactionOptionsPrefab.activeSelf)

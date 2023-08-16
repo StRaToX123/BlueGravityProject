@@ -7,5 +7,5 @@ public class ItemDataSO : ScriptableObject
 {
     public Sprite sprite;
     public string itemName;
-    public uint price;
+    public int price;
 }
