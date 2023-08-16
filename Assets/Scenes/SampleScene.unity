@@ -9668,13 +9668,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.42346, y: 1.6189, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -22024,6 +22024,8 @@ MonoBehaviour:
   interactionOptionsPrefab: {fileID: 1719424080}
   itemInventory: {fileID: 1130032216}
   transactionMenuPrefab: {fileID: 4248304697541508130, guid: c7bea7a4c1f3e1b4d96790b351d5b6b3,
+    type: 3}
+  merchantTransactionMenuViewPrefab: {fileID: 8214160484112420927, guid: eb926eedcd785c0409df28386360aec8,
     type: 3}
 --- !u!4 &1130032215
 Transform:
@@ -39690,7 +39692,7 @@ Transform:
   - {fileID: 1291986602}
   - {fileID: 2029937602}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9059005975903497768
 Animator:

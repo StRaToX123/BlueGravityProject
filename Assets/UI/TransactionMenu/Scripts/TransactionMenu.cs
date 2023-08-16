@@ -18,6 +18,7 @@ public class TransactionMenu : MonoBehaviour
     public TextMeshProUGUI tmpPlayerAvailableCoins;
     public RectTransform upScrollArrow;
     public RectTransform downScrollArrow;
+    public RectTransform background;
     // The amount of items in the array is equal to the numberOfItemsOnScreen variable
     public List<TransactionMenuItem> transactionMenuItems;
     private GameObject merchantTransactionMenuViewPrefab;
@@ -35,7 +36,8 @@ public class TransactionMenu : MonoBehaviour
 
     // Must be called before the TransactionMenu is enabled i.e. the Start method runs
     public void ShowTransactionMenu(string title,
-        string sellerName, 
+        string sellerName,
+        GameObject sellerTransactionMenuViewPrefab,
         string textControl01,
         ItemInventory sellerInventory,
         ItemInventory buyerInventory)
@@ -64,6 +66,15 @@ public class TransactionMenu : MonoBehaviour
             scrollingEnabled = true;
         }
 
+        // Setup the sellerTransactionMenuViewPrefab
+        RectTransform newSellerTransactionMenuViewPrefab = GameObject.Instantiate(sellerTransactionMenuViewPrefab).GetComponent<RectTransform>();
+        Vector3 previousNewSellerTransactionMenuViewPrefabPosition = newSellerTransactionMenuViewPrefab.position;
+        Vector3 previousNewSellerTransactionMenuViewPrefabScale = newSellerTransactionMenuViewPrefab.localScale;
+        newSellerTransactionMenuViewPrefab.gameObject.transform.SetParent(background.transform, false);
+        newSellerTransactionMenuViewPrefab.localPosition = previousNewSellerTransactionMenuViewPrefabPosition;
+        newSellerTransactionMenuViewPrefab.localScale = previousNewSellerTransactionMenuViewPrefabScale;
+
+        // Setup the indexes
         selectedTransactionMenuItemIndex = 0;
         selectedSellerItemIndex = 0;
         transactionMenuItemsWindowUpperBoundIndex = 0;

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class MerchantCat : Merchant
 {
     public GameObject transactionMenuPrefab;
+    // UI renderable version of the merchant
+    public GameObject merchantTransactionMenuViewPrefab;
     private bool isTransactionMenuActive;
    
     // Start is called before the first frame update
@@ -39,7 +41,8 @@ public class MerchantCat : Merchant
         TransactionMenu transactionMenu = GameObject.Instantiate(transactionMenuPrefab).GetComponent<TransactionMenu>();
         transactionMenu.OnClose += OnTransactionMenuCloseCallback;
         transactionMenu.ShowTransactionMenu("BUY MENU", 
-            merchantName, 
+            merchantName,
+            merchantTransactionMenuViewPrefab,
             "E: Purchase",
             itemInventory, 
             GameObject.FindGameObjectWithTag("Player").GetComponent<ItemInventory>());
@@ -53,6 +56,7 @@ public class MerchantCat : Merchant
         transactionMenu.OnClose += OnTransactionMenuCloseCallback;
         transactionMenu.ShowTransactionMenu("SELL ITEMS",
             merchantName,
+            merchantTransactionMenuViewPrefab,
             "E: Sell Item",
             GameObject.FindGameObjectWithTag("Player").GetComponent<ItemInventory>(),
             itemInventory);
