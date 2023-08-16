@@ -11,6 +11,11 @@ public class TransactionMenu : MonoBehaviour
     public delegate void OnCloseAction();
     [HideInInspector]
     public event OnCloseAction OnClose;
+    [HideInInspector]
+    public delegate void OnItemSoldAction(ItemDataSO itemData);
+    [HideInInspector]
+    // This event can allow for custom merchant prompts or dialogue if a specific item is sold
+    public event OnItemSoldAction OnItemSold;
     public TextMeshProUGUI tmpTitle;
     public TextMeshProUGUI tmpSellerName;
     public TextMeshProUGUI tmpControl01;
@@ -66,6 +71,11 @@ public class TransactionMenu : MonoBehaviour
             scrollingEnabled = true;
         }
 
+        Canvas canvas = this.gameObject.GetComponent<Canvas>();
+        canvas.worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        canvas.sortingLayerName = "UI";
+        canvas.sortingOrder = 3;
+
         // Setup the sellerTransactionMenuViewPrefab
         RectTransform newSellerTransactionMenuViewPrefab = GameObject.Instantiate(sellerTransactionMenuViewPrefab).GetComponent<RectTransform>();
         Vector3 previousNewSellerTransactionMenuViewPrefabPosition = newSellerTransactionMenuViewPrefab.position;
@@ -81,7 +91,7 @@ public class TransactionMenu : MonoBehaviour
         transactionMenuItemsWindowLowerBoundIndex = transactionMenuItems.Count - 1;
         upScrollArrow.gameObject.SetActive(false);
         UpdateItems();
-
+        
         // Turn on the gameobject
         this.enabled = true;
     }
@@ -165,6 +175,11 @@ public class TransactionMenu : MonoBehaviour
                         scrollingEnabled = false;
                         Destroy(transactionMenuItems[transactionMenuItems.Count - 1].gameObject);
                         transactionMenuItems.RemoveAt(transactionMenuItems.Count - 1);
+                    }
+
+                    if (OnItemSold != null)
+                    {
+                        OnItemSold(sellerInventory.items[selectedSellerItemIndex]);
                     }
 
                     buyerInventory.numberOfCoins -= sellerInventory.items[selectedSellerItemIndex].price;
