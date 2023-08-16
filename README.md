@@ -26,9 +26,9 @@ Used Free Asset Packs:
 
 # Merchants and the Transaction Menu:
 There are two merchants present in the demo (Merchant Cat, Merchant Rogue), both inherit from a base class Merchant.   <br /> 
-This allows them to have basic interactability with the player as well as offer a selectable list of options upon    <br />
-interacting with them. Each merchant then, alters and implements different options (i.e. the merchant rogue has a    <br />
-talk options while the merchant cat does not).     <br />
+This allows them to have basic interactability with the player as well as offer a selectable list of options once the player 
+interacts with them. 
+Each merchant can then implement different options (i.e. the merchant rogue has a talk option while the merchant cat does not). <br />
 The transaction menu features the ability to scroll through an arbitrarily long list of items and call function    <br />
 callbacks whenever an item is sold, allowing for an extendable system where, each merchant can implement custom logic   <br />
 (i.e. accepting only scertain items, or having custom dialog for some items). Added some quick animations to the UI    <br />
