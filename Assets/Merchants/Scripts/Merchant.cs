@@ -33,21 +33,6 @@ public class Merchant : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        // Check if the player can interact with this merchant
-        if (interactionPromptPrefab.activeSelf)
-        {
-            if (Input.GetButtonDown("Interact"))
-            {
-                interactionPromptPrefab.SetActive(false);
-                StartInteraction();
-                selectedInteractionOptionIndex = 0;
-                interactionOptionsPrefab.SetActive(true);
-                // Freeze the player
-                GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().enabled = false;
-
-            }
-        }
-
         // Navigate the interaction options
         // but only if the player has interacted with the merchant
         if (interactionOptionsPrefab.activeSelf)
@@ -76,6 +61,21 @@ public class Merchant : MonoBehaviour
             if (Input.GetButtonDown("Interact"))
             {
                 interactionOptionsButtons[selectedInteractionOptionIndex].onClick.Invoke();
+            }
+        }
+
+        // Check if the player can interact with this merchant
+        if (interactionPromptPrefab.activeSelf)
+        {
+            if (Input.GetButtonDown("Interact"))
+            {
+                interactionPromptPrefab.SetActive(false);
+                StartInteraction();
+                selectedInteractionOptionIndex = 0;
+                interactionOptionsPrefab.SetActive(true);
+                // Freeze the player
+                GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().enabled = false;
+
             }
         }
     }

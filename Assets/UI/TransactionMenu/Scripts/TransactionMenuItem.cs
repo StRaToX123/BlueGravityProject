@@ -9,6 +9,12 @@ public class TransactionMenuItem : MonoBehaviour
     public TextMeshProUGUI tmpName;
     public TextMeshProUGUI tmpPrice;
     public Image image;
+    public Image background;
+
+    void Start()
+    {
+        background = GetComponent<Image>();
+    }
 
     public void SetupItem(string name, string price, Sprite sprite)
     {

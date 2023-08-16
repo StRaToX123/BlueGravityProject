@@ -5,19 +5,25 @@ using UnityEngine.UI;
 
 public class MerchantCat : Merchant
 {
-
-    public GameObject transcationMenuPrefab;
+    public GameObject transactionMenuPrefab;
+    private bool isTransactionMenuActive;
    
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
+        isTransactionMenuActive = false;
+
+
     }
 
     // Update is called once per frame
     public override void Update()
     {
-        base.Update();
+        if (isTransactionMenuActive == false)
+        {
+            base.Update();
+        }
     }
 
     public override void StartInteraction()
@@ -32,14 +38,24 @@ public class MerchantCat : Merchant
     // Setup the transaction menu so that the player is the buyer, and this merchant is the seller
     public void InteractionOptionBuyCallback()
     {
-        Debug.Log("KUPUJEMO");
-        //GameObject newTransactionMenu = GameObject.Instantiate(transcationMenu);
-        //newTransactionMenu.GetComponent<TransactionMenu>().Setup(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>(), this);
+        TransactionMenu transactionMenu = GameObject.Instantiate(transactionMenuPrefab).GetComponent<TransactionMenu>();
+        transactionMenu.ShowTransactionMenu("BUY MENU", 
+            merchantName, 
+            "E: Purchase", 
+            items, 
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>().items);
+        isTransactionMenuActive = true;
     }
 
     // Setup the transaction menu so that the player is the seller, and this merchant is the buyer
     public void InteractionOptionSellCallback()
     {
-        Debug.Log("Prodajemo");
+        TransactionMenu transactionMenu = GameObject.Instantiate(transactionMenuPrefab).GetComponent<TransactionMenu>();
+        transactionMenu.ShowTransactionMenu("SELL ITEMS",
+            merchantName,
+            "E: Sell Item",
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>().items,
+            items);
+        isTransactionMenuActive = false;
     }
 }
