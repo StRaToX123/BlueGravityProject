@@ -75,8 +75,10 @@ public class Merchant : MonoBehaviour
                 selectedInteractionOptionIndex = 0;
                 interactionOptionsPrefab.SetActive(true);
                 // Freeze the player
-                GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().enabled = false;
-
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                player.GetComponent<CharacterController>().enabled = false;
+                player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+                player.GetComponent<Animator>().SetBool("IsMoving", false);
             }
         }
     }
@@ -100,7 +102,9 @@ public class Merchant : MonoBehaviour
     public void InteractionOptionsExitCallback()
     {
         // Unfreeze the player
-        GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().enabled = true;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<CharacterController>().enabled = true;
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         interactionOptionsPrefab.SetActive(false);
     }
 }
